@@ -11,9 +11,31 @@ class App extends Component {
       { title: "When We Left Cuba", author: "Chanel Cleeton" },
     ];
     this.state = {
-      bookNumber: 1,
+      bookNumber: 0,
     };
   }
+
+  goToNextBook = () => {
+    let tempBookNumber = this.state.bookNumber;
+    tempBookNumber++;
+    if (tempBookNumber === this.books.length) {
+      tempBookNumber = 0;
+    }
+    this.setState({
+      bookNumber: tempBookNumber,
+    });
+  };
+
+  goToPreviousBook = () => {
+    let tempBookNumber = this.state.bookNumber;
+    tempBookNumber--;
+    if (tempBookNumber < 0) {
+      tempBookNumber = this.books.length - 1;
+    }
+    this.setState({
+      bookNumber: tempBookNumber,
+    });
+  };
 
   render() {
     return (
@@ -22,6 +44,7 @@ class App extends Component {
         <div className="row">
           <div className="col-md-4">
             {/**Button here to move to the previous book viewed */}
+            <button onClick={this.goToPreviousBook}>Previous Book</button>
           </div>
           <div className="col-md-4">
             {/**Display book with cover here */}
@@ -30,6 +53,7 @@ class App extends Component {
           </div>
           <div className="col-md-4">
             {/**Button here to move to the next book viewed */}
+            <button onClick={this.goToNextBook}>Next Book</button>
           </div>
         </div>
       </div>
