@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import TitleBar from "./TitleBar/TitleBar";
 import BookViewer from "./BookViewer/BookViewer";
+import Footer from "../components/Footer/Footer";
 
 class App extends Component {
   constructor(props) {
@@ -47,6 +48,7 @@ class App extends Component {
           nextBook={this.goToNextBook}
           previousBook={this.goToPreviousBook}
         />
+        <Footer />
       </div>
     );
   }
